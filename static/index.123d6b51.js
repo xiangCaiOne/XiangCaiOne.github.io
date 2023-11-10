@@ -1,0 +1,1 @@
+import{j as s}from"./el-row.ff959551.js";import{i as o,h as t,g as r}from"./entry.de84c172.js";const a=["","default","small","large"],c=s({type:String,values:a,required:!1}),i=Symbol("size"),l=()=>{const e=o(i,{});return t(()=>r(e.size)||"")};export{i as S,l as a,a as c,c as u};
