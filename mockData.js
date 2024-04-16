@@ -60,7 +60,7 @@ window.g = {
             "intro": "null"
         },
         {
-            "title": "vu111e",
+            "title": "vue",
             "content": "##  一. keep-alive \n##  二. vue3 组件通信\n    - 父传子\n      1) Prop 是 逐级透传\n         父 ===> 子\n\n          另外，每次父组件更新后，所有的子组件中的 props 都会被更新到最新值，这意味着你不应该在子组件中去更改一个 prop。若你这么做了，Vue 会在控制台上向你抛出警告\n         \n           当对象或数组作为 props 被传入时，虽然子组件无法更改 props 绑定，但仍然可以更改对象或数组内部的值。这是因为 JavaScript 的对象和数组是按引用传递，而对 Vue 来说，禁止这样的改动，虽然可能生效，但有很大的性能损耗，比较得不偿失。\n      2) provide【inject】 可越级传值\n     \n    - 子传父\n      1）emits:[\"evevt1\",\"evevt2\"], emit(\"evevt1\",data),emit(\"evevt2\",data)\n      2) 父组件通过 **ref** 访问子组件\n         - vue3 非语法糖模式只能访问 setup return的方法和数据\n         - vue3 语法糖模式需要通过 defineExpose({ sonData,}); 导出能被外部访问的方法和数据\n         \n            const sonData = ref(0);\n            defineExpose({\n              sonData,\n            });\n##  三. vue3 插槽（未完成）\n##  四. vue3 状态管理（未完成）\n##  五. vue3 路由守卫（未完成）\n    1) 全局守卫\n    2) 组件守卫\n   \n##  六. ### 计算属性\n\n```language\n<template>\n  <div>\n    <h3>computed</h3>\n    <hr />\n    <el-input v-model=\"sx1\"></el-input>\n    <el-input v-model=\"sx2\"></el-input>\n    <el-input v-model=\"sx3\"></el-input>\n  </div>\n</template>\n\n<script setup>\nimport { computed, ref, nextTick } from \"vue\";\nconst sx1 = ref(\"\");\n// 基础用法【只读】\n// const sx2 = computed((a, b)=> sx1.value + \" \" + sx3.value;);\n\n\n// 可写【get, set】\nconst sx2 = computed({\n  get(a, b) {\n    console.log(\"get\", a, b);\n    return sx1.value + \" \" + sx3.value;\n  },\n  set(newValue) {\n    [sx1.value, sx3.value] = newValue.split(\" \");\n  },\n});\nconst sx3 = ref(\"\");\n</script>\n<style scoped lang=\"less\"></style>\n```\n## 七. 自定义指令\n    全局定义指令\n   ```language\n   const directives = function (app) {\n    app.directive(\"test\", {\n        // 在绑定元素的 attribute 前\n        // 或事件监听器应用前调用\n        created(el, binding, vnode, prevVnode) {\n            console.log(\"created\", el, binding, vnode, prevVnode);\n            // 下面会介绍各个参数的细节\n        },\n        // 在元素被插入到 DOM 前调用\n        beforeMount(el, binding, vnode, prevVnode) {\n            console.log(\"beforeMount\");\n        },\n        // 在绑定元素的父组件\n        // 及他自己的所有子节点都挂载完成后调用\n        mounted(el, binding, vnode, prevVnode) {\n            console.log(\"mounted\", el, binding, vnode, prevVnode);\n        },\n        // 绑定元素的父组件更新前调用\n        beforeUpdate(el, binding, vnode, prevVnode) {\n            console.log(\"beforeUpdate\");\n        },\n        // 在绑定元素的父组件\n        // 及他自己的所有子节点都更新后调用\n        updated(el, binding, vnode, prevVnode) {\n            console.log(\"updated\");\n        },\n        // 绑定元素的父组件卸载前调用\n        beforeUnmount(el, binding, vnode, prevVnode) {\n            console.log(\"beforeUnmount\");\n        },\n        // 绑定元素的父组件卸载后调用\n        unmounted(el, binding, vnode, prevVnode) {\n            console.log(\"unmounted\");\n        }\n      })\n    }\n    \n    ```\n\n   全局注册指令\n   ```language\n   import directives from \"@/utils/directives\";\n    // import \"nprogress/nprogress.css\"\n    \n    const _App = createApp(App);\n    _App.use(store).use(ElementPlus).use(router).mount(\"#app\");\n    \n    directives(_App)\n   ```\n",
             "articleDM": 88,
             "createAt": "2023-09-12T02:32:53.000Z",
@@ -70,6 +70,13 @@ window.g = {
             "fileDM": 144,
             "intro": "undefined"
         },
+        {
+            "articleDM": 1713102959809,
+            "content": "撒旦发射点法发",
+            "createAt": "2024-04-14 21:55:58",
+            "title": "d'sa'f",
+            "intro": "dsafs'd'fa'f'sa'd'f"
+        }
     ],
     // 个人信息配置 
     userInfo: [
@@ -119,5 +126,24 @@ window.g = {
         }
     ],
     // 导航栏 github 链接配置
-    githubLink: 'https://github.com/xiangCaiOne'
+    githubLink: 'https://github.com/xiangCaiOne',
+    canvasPages: [
+        {
+            path: "/canvas/1.yuan.html",
+            title: "production 1",
+        },
+        {
+            path: "/canvas/2.eye.html",
+            title: "production 2",
+        },
+        {
+            path: "/canvas/3.source.html",
+            title: "production 3",
+        },
+        {
+            path: "/canvas/4.rectActionBorder.html",
+            title: "production 4",
+        },
+
+    ]
 }
